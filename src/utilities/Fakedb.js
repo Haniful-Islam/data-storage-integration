@@ -1,12 +1,24 @@
 const addToDb = (id) => {
-    const quantity = localStorage.getItem(id, 1)
-    if(quantity){
-        const newQuantity = parseInt(quantity) + 1;
-        localStorage.setItem(id,newQuantity);
+    let shoppingCart;
+    // get the shopping cart
+    let  storedCart = localStorage.getItem('shopping-cart');
+    if(storedCart){
+        shoppingCart = JSON.parse(storedCart);
     }
     else{
-        localStorage.setItem(id, 1);
+        shoppingCart = {}
     }
+    const quantity =shoppingCart[id];
+    if(quantity){
+        const newQuantity = parseInt(quantity) + 1;
+        shoppingCart[id] = newQuantity;
+        // localStorage.setItem(id,newQuantity);
+    }
+    else{
+        shoppingCart[id] = 1;
+        // localStorage.setItem(id, 1);
+    }
+    localStorage.setItem("shopping-cart", JSON.stringify(shoppingCart));
 }
 
 export default addToDb;
