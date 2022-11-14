@@ -1,13 +1,18 @@
 import React from 'react';
-import {addToDb, removeFromDb } from '../../utilities/Fakedb';
+import addToDb from '../../utilities/Fakedb';
+// import { addToDb, removeFromDb } from '../../utilities/Fakedb';
+
 
 const Cosmetic = (props) => {
     const {id, name, price} = props.cosmetic;
+
+
     const addtoCart = (id) => {
-        addToDb(id)
-    }
+      addToDb(id) 
+       }
+
     const removeFromCart = id => {
-        removeFromDb(id);
+    //    console.log(id);
     }
     // const addtoCartwithParam = () => addtoCart(id);
     return (
